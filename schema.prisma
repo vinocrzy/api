@@ -1,0 +1,32 @@
+// schema.prisma
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+    provider = "mongodb" //mongodb
+    url      = env("MONGODB_PRISMA_URL") // uses connection pooling
+}
+
+model BasicInfo {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    data      Json?
+}
+
+model CompanyInfo {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    data      Json?
+}
+
+model ProductPortfolio {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    data      Json?
+}
